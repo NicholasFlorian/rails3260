@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   # our main sign-in page
   #root "articles#sign_in"
-  root "sessions#home"
+  root "sessions#sign_in"
   get "/articles", to: "articles#sign_in"
 
   # our user page
