@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'sessions/sign_in'
   # include user pages
   resources :users
   

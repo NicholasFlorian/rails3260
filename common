@@ -1,0 +1,9 @@
+COMMON:
+
+rails server -d -p 32093 -b 0.0.0.0
+
+https://cis3260.socs.uoguelph.ca:32093
+
+/home/undergrad/1/nflorian/rails3260/tmp/pids/server.pid
+
+
