@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   # our main sign-in page
   #root "articles#sign_in"
-  root "sessions#sign_in"
-  get "/articles", to: "articles#sign_in"
+  root "sessions#root"
+  #get "/articles", to: "articles#sign_in"
 
   # our user page
 
@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   
 
   # define our user routes
-  resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
+  #resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
 
-  get   '/sign_in', to: "sessions#sign_in"
-  post  '/sign_in', to: "sessions#sign_up"
-  get   '/sign_out', to: "sessions#destroy"
-  post  '/sign_out', to: "sessions#destroy"
+  #get   '/sign_in', to: "sessions#sign_in"
+  #post  '/sign_in', to: "sessions#sign_up"
+  #get   '/sign_out', to: "sessions#destroy"
+  #post  '/sign_out', to: "sessions#destroy"
 
 end
