@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   # our store page
   
 
-  # define our user roautes
+  # define our user routes
   resources :users, only: [:new, :create, :edit, :update, :show, :destroy]
 
   get   '/sign_in', to: "sessions#sign_in"
