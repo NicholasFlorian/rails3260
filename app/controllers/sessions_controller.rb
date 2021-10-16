@@ -19,13 +19,12 @@ class SessionsController < ApplicationController
     if !!user then
       
       # Log the user in and redirect to the user's show page.
-      sign_in(user)         # app/helpers/session_helper.rb
-      redirect_to(profile)  # config/routes
+      sign_in user         # app/helpers/session_helper.rb
+      redirect_to profile  # config/routes
     else
 
       # Create an error message.
       flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
      end
   end
 
@@ -39,7 +38,7 @@ class SessionsController < ApplicationController
   # app/view/sessions/profile.html.erb
   def profile 
 
-    @user = current_user()
+    @user = current_user
   end
 
 end
