@@ -15,6 +15,8 @@ class SessionsController < ApplicationController
       #params[:session][]
       email: params[:email],
       password: params[:password]) 
+
+    puts user.inspect()
     
     if !!user then
       
