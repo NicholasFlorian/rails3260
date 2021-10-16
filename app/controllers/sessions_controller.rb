@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
     # find the user with the matching email and password
     user = User.find_by(
       #params[:session][]
-      email: params[:email],
-      password: params[:password]) 
+      email: params[:session][:email],
+      password: params[:session][:password]) 
 
     puts user.inspect()
     flash.now[:danger] = user.inspect()
