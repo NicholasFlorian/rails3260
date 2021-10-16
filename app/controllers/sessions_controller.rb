@@ -5,21 +5,22 @@ class SessionsController < ApplicationController
   def register
   end
 
-  
+
   # POST sign in to the app
   def sign_in
 
     # were not authenticating, 
     # find the user with the matching email and password
     user = User.find_by(
-      email: params[:session][:email],
-      password: params[:session][:password]) 
+      #params[:session][]
+      email: params[:email],
+      password: params[:password]) 
     
     if !!user then
       
       # Log the user in and redirect to the user's show page.
-      sign_in user        # app/helpers/session_helper.rb
-      redirect_to profile # config/routes
+      sign_in(user)         # app/helpers/session_helper.rb
+      redirect_to(profile)  # config/routes
     else
 
       # Create an error message.
@@ -38,7 +39,7 @@ class SessionsController < ApplicationController
   # app/view/sessions/profile.html.erb
   def profile 
 
-    @user = current_user
+    @user = current_user()
   end
 
 end
