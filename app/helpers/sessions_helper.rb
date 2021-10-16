@@ -8,6 +8,7 @@ module SessionsHelper
     @current_user ||= User.find_by(user_id)
   end
 
+
   # gets current user
   def current_user
 
@@ -19,6 +20,7 @@ module SessionsHelper
   
   # checks if the user is logged in
   def logged_in?
+
     !@current_user.nil?
   end
   

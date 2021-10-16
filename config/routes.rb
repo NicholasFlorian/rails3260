@@ -7,12 +7,12 @@ Rails.application.routes.draw do
 
 
   # sign in page
-  get     'register', to: 'sessions#register'
-  post    '/sign_in', to: 'sessions#sign_in' 
-  delete  '/sign_out', to: 'sessions#sign_out'
+  get     'register', to:   'sessions#register'
+  post    '/sign_in', to:   'sessions#sign_in' 
+  delete  '/sign_out', to:  'sessions#sign_out'
 
   # user page
-  get     'profile', to: 'sessions#profile'
+  get     'profile', to:    'sessions#profile'
 
   
   # set our root
