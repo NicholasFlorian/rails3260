@@ -1,11 +1,12 @@
 class SessionsController < ApplicationController
   
-  # defign our sign in page
+  # GET defign our sign in page
   # app/views/sessions/sign_in.html.erb
   def register
   end
 
-  # sign in
+  
+  # POST sign in to the app
   def sign_in
 
     # were not authenticating, 
@@ -27,12 +28,13 @@ class SessionsController < ApplicationController
      end
   end
 
+  # DELETE sign out of the app
   def sign_out
   end
 
 
 
-  # define our user page
+  # GET define our user page
   # app/view/sessions/profile.html.erb
   def profile 
 
