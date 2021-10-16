@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   # sign in page
   get     'register', to:   'sessions#register'
-  post    '/sign_in', to:   'sessions#sign_in' 
-  delete  '/sign_out', to:  'sessions#sign_out'
+  post    '/sign_in', to:   'sessions#register' 
+  delete  '/sign_out', to:  'sessions#register'
 
   # user page
   get     'profile', to:    'sessions#profile'
