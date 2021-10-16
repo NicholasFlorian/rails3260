@@ -17,6 +17,7 @@ class SessionsController < ApplicationController
       password: params[:password]) 
 
     puts user.inspect()
+    flash.now[:danger] = user.inspect()
     
     if !!user then
       
