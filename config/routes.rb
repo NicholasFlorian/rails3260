@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   
   # set our root
   root 'sessions#register'
+  
 end

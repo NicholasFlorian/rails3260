@@ -3,6 +3,12 @@ class SessionsController < ApplicationController
   # GET defign our sign in page
   # app/views/sessions/sign_in.html.erb
   def register
+
+    if logged_in then
+
+      @user = current_user
+      redirect_to profile_path
+    end
   end
 
 
@@ -18,7 +24,9 @@ class SessionsController < ApplicationController
     if !!requested_user then
       
       # log the user in and redirect to the user's show page.
-      @user = requested_user
+      #@user = requested_user
+      
+      store_user requested_user
       redirect_to profile_path 
     else
 
@@ -60,6 +68,8 @@ class SessionsController < ApplicationController
   # GET define our user page
   # app/view/sessions/profile.html.erb
   def profile 
+
+    @user = current_user
   end
 
 end
