@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
 
     # were not authenticating, 
     # find the user with the matching email and password
-    user = User.find_by(
+    requested_user = User.find_by(
       email: params[:session][:email],
       password: params[:session][:password]) 
     
-    if !!user then
+    if !!requested_user then
       
       # log the user in and redirect to the user's show page.
-      store_user user
+      @user = requested_user
       redirect_to profile_path 
     else
 
@@ -34,12 +34,12 @@ class SessionsController < ApplicationController
     # TODO Passowrd confirmation check
 
     # create our new user 
-    user = User.new(params)
+    submitted_user = User.new(params)
 
     # store it in the datebase and log in
     respond_to do |format|
       
-      if user.save
+      if submitted_user.save
 
         # log the user into the system
         #redirect_to :back
@@ -60,8 +60,6 @@ class SessionsController < ApplicationController
   # GET define our user page
   # app/view/sessions/profile.html.erb
   def profile 
-
-    @user = current_user
   end
 
 end
