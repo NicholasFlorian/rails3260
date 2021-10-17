@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  # include user pages
   resources :users
+  # include user pages
 
 
   # sign in page

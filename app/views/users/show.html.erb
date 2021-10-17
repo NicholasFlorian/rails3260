@@ -15,5 +15,15 @@
   <%= @user.password %>
 </p>
 
+<p>
+  <strong>Points:</strong>
+  <%= @user.points %>
+</p>
+
+<p>
+  <strong>Gems:</strong>
+  <%= @user.gems %>
+</p>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
