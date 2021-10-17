@@ -38,13 +38,19 @@ class SessionsController < ApplicationController
   # POST sign up for the app
   def sign_up
 
-    # TODO Passowrd confirmation check
-      # name: params[:session][:name],
-      # email: params[:session][:email],
-      # password: params[:session][:password]
+    name = params[:session][:name]
+    email = params[:session][:email]
+    password = params[:session][:password]
+    # TODO, CHECK!
 
     # create our new user 
-    submitted_user = User.new()
+    submitted_user = User.new(
+      :name => name,
+      :email => email,
+      :password => password,
+      :points => 0,
+      :gems => 0
+    )
 
     # store it in the datebase and log in
     if submitted_user.save
