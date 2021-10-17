@@ -32,6 +32,7 @@ class SessionsController < ApplicationController
 
       # create an error message.
       #redirect_to :back
+      redirect_to register_path, notice: "Book not found"
      end
   end
 
@@ -54,10 +55,12 @@ class SessionsController < ApplicationController
 
         # log the user into the system
         #redirect_to :back
+        flash[:alert] = "User Added"
       else
         
         # create an error message.
         #redirect_to :back
+        flash[:alert] = "User Not Added"
       end
     end
   end
