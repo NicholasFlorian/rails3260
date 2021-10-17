@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   # app/views/sessions/sign_in.html.erb
   def register
 
-    if logged_in then
+    if logged_in? then
 
       @user = current_user
       redirect_to profile_path
