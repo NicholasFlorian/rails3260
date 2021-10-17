@@ -2,7 +2,7 @@ module SessionsHelper
 
 
   # signs in user
-  def sign_in(user)
+  def store_user(user)
 
     session[:user_id] = user.id
     @current_user ||= User.find_by(user_id)
@@ -18,10 +18,10 @@ module SessionsHelper
     end
   end
   
+
   # checks if the user is logged in
   def logged_in?
 
     !@current_user.nil?
   end
-  
 end

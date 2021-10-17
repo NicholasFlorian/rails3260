@@ -22,8 +22,8 @@ class SessionsController < ApplicationController
     if !!user then
       
       # Log the user in and redirect to the user's show page.
-      sign_in user         # app/helpers/session_helper.rb
-      redirect_to profile  # config/routes
+      store_user(user)        # app/helpers/session_helper.rb
+      redirect_to(profile)    # config/routes
     else
 
       # Create an error message.
@@ -31,10 +31,10 @@ class SessionsController < ApplicationController
      end
   end
 
+
   # DELETE sign out of the app
   def sign_out
   end
-
 
 
   # GET define our user page
