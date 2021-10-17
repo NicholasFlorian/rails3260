@@ -45,3 +45,9 @@
     <%= f.submit "Sign up", class: "btn btn-primary" %> <% end %> 
   </div>
 </div>
+
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
+<% end %>
