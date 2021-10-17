@@ -1,7 +1,8 @@
 <% provide(:title, "Register") %> 
 
+<h1>Dice Game</h1> <br>
 
-<h1>Sign in</h1>
+<h2>Sign in</h2>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -21,7 +22,7 @@
 
 <p><i>Don't have an account? Sign up below!</i></p>
 
-<h1>Sign up</h1>
+<h2>Sign up</h2>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -38,6 +39,11 @@
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
 
+    <%= f.label :confirm_password %>
+    <%= f.password_field :confirm_password, class: 'form-control' %>
+
     <%= f.submit "Sign up", class: "btn btn-primary" %> <% end %> 
   </div>
 </div>
+
+<%= render 'form', user: @user %>

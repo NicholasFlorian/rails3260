@@ -42,7 +42,10 @@ class SessionsController < ApplicationController
     # TODO Passowrd confirmation check
 
     # create our new user 
-    submitted_user = User.new(params)
+    submitted_user = User.new(
+      name: params[:session][:name],
+      email: params[:session][:email],
+      password: params[:session][:password])
 
     # store it in the datebase and log in
     respond_to do |format|
