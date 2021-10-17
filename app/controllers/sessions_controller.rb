@@ -12,23 +12,43 @@ class SessionsController < ApplicationController
     # were not authenticating, 
     # find the user with the matching email and password
     user = User.find_by(
-      #params[:session][]
       email: params[:session][:email],
       password: params[:session][:password]) 
-
-    puts user.inspect()
-    flash.now[:danger] = user.inspect()
     
     if !!user then
       
-      # Log the user in and redirect to the user's show page.
-      store_user(user)        # app/helpers/session_helper.rb
-      redirect_to(profile)    # config/routes
+      # log the user in and redirect to the user's show page.
+      store_user user
+      redirect_to profile_path 
     else
 
-      # Create an error message.
-      flash.now[:danger] = 'Invalid email/password combination'
+      # create an error message.
+      redirect_to :back
      end
+  end
+
+
+  # POST sign up for the app
+  def sign_up
+
+    # TODO Passowrd confirmation check
+
+    # create our new user 
+    user = User.new(params)
+
+    # store it in the datebase and log in
+    respond_to do |format|
+      
+      if user.save
+
+        # log the user into the system
+        redirect_to :back
+      else
+        
+        # create an error message.
+        redirect_to :back
+      end
+    end
   end
 
 
