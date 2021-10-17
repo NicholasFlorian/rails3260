@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     else
 
       # create an error message.
-      redirect_to :back
+      #redirect_to :back
      end
   end
 
@@ -42,11 +42,11 @@ class SessionsController < ApplicationController
       if user.save
 
         # log the user into the system
-        redirect_to :back
+        #redirect_to :back
       else
         
         # create an error message.
-        redirect_to :back
+        #redirect_to :back
       end
     end
   end
