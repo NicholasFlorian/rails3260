@@ -39,15 +39,6 @@
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
 
-    <%= f.label :confirm_password %>
-    <%= f.password_field :confirm_password, class: 'form-control' %>
-
     <%= f.submit "Sign up", class: "btn btn-primary" %> <% end %> 
   </div>
 </div>
-
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
-<% end %>

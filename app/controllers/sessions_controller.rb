@@ -25,14 +25,12 @@ class SessionsController < ApplicationController
       
       # log the user in and redirect to the user's show page.
       #@user = requested_user
-      
       store_user requested_user
       redirect_to profile_path 
     else
 
       # create an error message.
-      #redirect_to :back
-      redirect_to register_path, notice: "Book not found"
+      redirect_to register_path
      end
   end
 
@@ -41,27 +39,24 @@ class SessionsController < ApplicationController
   def sign_up
 
     # TODO Passowrd confirmation check
+      # name: params[:session][:name],
+      # email: params[:session][:email],
+      # password: params[:session][:password]
 
     # create our new user 
-    submitted_user = User.new(
-      name: params[:session][:name],
-      email: params[:session][:email],
-      password: params[:session][:password])
+    submitted_user = User.new()
 
     # store it in the datebase and log in
-    respond_to do |format|
-      
-      if submitted_user.save
+    if submitted_user.save
 
-        # log the user into the system
-        #redirect_to :back
-        flash[:alert] = "User Added"
-      else
-        
-        # create an error message.
-        #redirect_to :back
-        flash[:alert] = "User Not Added"
-      end
+      # log the user into the system
+      #redirect_to
+      flash[:alert] = "User Added"
+    else
+      
+      # create an error message.
+      #redirect_to
+      flash[:alert] = "User Not Added"
     end
   end
 
