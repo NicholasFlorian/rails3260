@@ -4,12 +4,12 @@ one:
   name: MyString
   email: MyString
   password: MyString
-  points: 
-  gems: 
+  points: 1
+  gems: 1
 
 two:
   name: MyString
   email: MyString
   password: MyString
-  points: 
-  gems: 
+  points: 1
+  gems: 1
