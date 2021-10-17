@@ -15,11 +15,15 @@ class SessionsController < ApplicationController
   # POST sign in to the app
   def sign_in
 
+    # retreive form
+    email = params[:session][:email]
+    password = params[:session][:password]
+
     # were not authenticating, 
     # find the user with the matching email and password
     requested_user = User.find_by(
-      email: params[:session][:email],
-      password: params[:session][:password]) 
+      email: email,
+      password: password) 
     
     if !!requested_user then
       
@@ -30,14 +34,23 @@ class SessionsController < ApplicationController
     else
 
       # create an error message.
-      redirect_to register_path
-     end
+      respond_to do |format|
+        format.html do
+          flash.now[:status_msg] = "Log in failed, incorrect username or password"
+          render :contact, locals: { feedback: params }
+        end
+      end
+
+      # refresh the page
+      #redirect_to register_path  
+    end
   end
 
 
   # POST sign up for the app
   def sign_up
 
+    # retreive form
     name = params[:session][:name]
     email = params[:session][:email]
     password = params[:session][:password]
@@ -56,13 +69,21 @@ class SessionsController < ApplicationController
     if submitted_user.save
 
       # log the user into the system
-      #redirect_to
-      flash[:alert] = "User Added"
+      requested_user = User.find_by(
+        email: email,
+        password: password) 
+
+      store_user requested_user
+      redirect_to profile_path 
     else
       
       # create an error message.
-      #redirect_to
-      flash[:alert] = "User Not Added"
+      respond_to do |format|
+        format.html do
+          flash.now[:status_msg] = "Sign in failed (internal error):"
+          render :contact, locals: { feedback: params }
+        end
+      end
     end
   end
 

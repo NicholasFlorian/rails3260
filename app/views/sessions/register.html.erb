@@ -2,6 +2,10 @@
 
 <h1>Dice Game</h1> <br>
 
+<% if flash.key? :status_msg %>
+  <p><%= flash[:status_msg] %></p>
+<% end %>
+
 <h2>Sign in</h2>
 
 <div class="row">
@@ -34,7 +38,7 @@
     <%= f.email_field :email, class: 'form-control' %>
 
     <%= f.label :name %>
-    <%= f.email_field :name, class: 'form-control' %>
+    <%= f.name_field :name, class: 'form-control' %>
 
     <%= f.label :password %>
     <%= f.password_field :password, class: 'form-control' %>
@@ -42,3 +46,4 @@
     <%= f.submit "Sign up", class: "btn btn-primary" %> <% end %> 
   </div>
 </div>
+
