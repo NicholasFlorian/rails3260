@@ -55,7 +55,6 @@ class SessionsController < ApplicationController
     name = params[:session][:name]
     email = params[:session][:email]
     password = params[:session][:password]
-    # TODO, CHECK!
 
     # create our new user 
     submitted_user = User.new(
@@ -73,6 +72,23 @@ class SessionsController < ApplicationController
       requested_user = User.find_by(
         email: email,
         password: password) 
+
+      # on first time sign up add the items 
+      coin = Coin.new(
+        :fk_user_id => requested_user.id,
+        :denomination => 0.25
+      )
+      coin.save
+      coin.save 
+      coin.save
+
+      die = Die.new(
+        :fk_user_id => requested_user.id,
+        :colour => "white",
+        :sides => 6
+      )
+
+      die.save
 
       store_user requested_user
       redirect_to profile_path 
@@ -106,14 +122,14 @@ class SessionsController < ApplicationController
     @user = nil
 
     # sign out of the session
-    sign_out
+    remove_user
 
     # redirect back to the main page
     redirect_to register_path 
   end
 
   # DELETE destroy the user and sign out.
-  def destroy
+  def delete_user
 
     # delete and clear the user instance
     @user.destroy

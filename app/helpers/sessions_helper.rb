@@ -20,7 +20,7 @@ module SessionsHelper
   end
 
   # sign the user out of the seesion
-  def sign_out
+  def remove_user
     
     session[:user_id] = nil
   end
