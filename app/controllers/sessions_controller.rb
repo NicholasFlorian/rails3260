@@ -23,9 +23,9 @@ class SessionsController < ApplicationController
 
     # were not authenticating, 
     # find the user with the matching email and password
-    requested_user = User.find_by(
+    requested_user = User.where(
       email: email,
-      password: password) 
+      password: password).first
     
     if !!requested_user then
       
@@ -69,9 +69,9 @@ class SessionsController < ApplicationController
     if submitted_user.save
 
       # log the user into the system
-      requested_user = User.find_by(
+      requested_user = User.where(
         email: email,
-        password: password) 
+        password: password).first 
 
       # on first time sign up add the items 
       for i in 0..2
@@ -117,8 +117,8 @@ class SessionsController < ApplicationController
     @user = current_user
 
     # get our coins and dies
-    @coins = Coin.find_all_by(fk_user_id: @user.id)
-    @dies = Dies.find_all_by(fk_user_id: @user.id)
+    @coins = Coin.where(fk_user_id: @user.id)
+    @dies = Dies.where(fk_user_id: @user.id)
   end
 
   # DELETE sign out of the app
