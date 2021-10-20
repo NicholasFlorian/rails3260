@@ -1,0 +1,2 @@
+class Die < ApplicationRecord
+end

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Dies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fk user</th>
+      <th>Colour</th>
+      <th>Sides</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @dies.each do |dy| %>
+      <tr>
+        <td><%= dy.fk_user_id %></td>
+        <td><%= dy.colour %></td>
+        <td><%= dy.sides %></td>
+        <td><%= link_to 'Show', dy %></td>
+        <td><%= link_to 'Edit', edit_dy_path(dy) %></td>
+        <td><%= link_to 'Destroy', dy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dy', new_dy_path %>

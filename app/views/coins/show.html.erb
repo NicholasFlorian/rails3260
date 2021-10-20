@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fk user:</strong>
+  <%= @coin.fk_user_id %>
+</p>
+
+<p>
+  <strong>Denomination:</strong>
+  <%= @coin.denomination %>
+</p>
+
+<%= link_to 'Edit', edit_coin_path(@coin) %> |
+<%= link_to 'Back', coins_path %>

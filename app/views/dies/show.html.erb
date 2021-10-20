@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fk user:</strong>
+  <%= @dy.fk_user_id %>
+</p>
+
+<p>
+  <strong>Colour:</strong>
+  <%= @dy.colour %>
+</p>
+
+<p>
+  <strong>Sides:</strong>
+  <%= @dy.sides %>
+</p>
+
+<%= link_to 'Edit', edit_dy_path(@dy) %> |
+<%= link_to 'Back', dies_path %>

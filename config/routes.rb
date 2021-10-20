@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :dies
+  resources :coins
   resources :users
   # include user pages
 
