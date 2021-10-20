@@ -1,7 +1,10 @@
 class SessionsController < ApplicationController
   
+  # sign in page
+  #
+  #
+
   # GET defign our sign in page
-  # app/views/sessions/sign_in.html.erb
   def register
 
     if logged_in? then
@@ -10,7 +13,6 @@ class SessionsController < ApplicationController
       redirect_to profile_path
     end
   end
-
 
   # POST sign in to the app
   def sign_in
@@ -42,10 +44,9 @@ class SessionsController < ApplicationController
       end
 
       # refresh the page
-      #redirect_to register_path  
+      redirect_to register_path  
     end
   end
-
 
   # POST sign up for the app
   def sign_up
@@ -87,17 +88,41 @@ class SessionsController < ApplicationController
     end
   end
 
-
-  # DELETE sign out of the app
-  def sign_out
-  end
-
+  
+  # profile page
+  #
+  #
 
   # GET define our user page
-  # app/view/sessions/profile.html.erb
   def profile 
 
     @user = current_user
   end
 
+  # DELETE sign out of the app
+  def sign_out
+    
+    # clear the user instance
+    @user = nil
+
+    # sign out of the session
+    sign_out
+
+    # redirect back to the main page
+    redirect_to register_path 
+  end
+
+  # DELETE destroy the user and sign out.
+  def destroy
+
+    # delete and clear the user instance
+    @user.destroy
+    @user = nil
+
+    # sign out of the session
+    sign_out
+
+    # redirect back to the main page
+    redirect_to register_path 
+  end
 end
