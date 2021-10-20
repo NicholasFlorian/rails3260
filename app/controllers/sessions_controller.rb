@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
   # GET defign our sign in page
   def register
 
-    if logged_in? then
+    if signed_in? then
 
       @user = current_user
       redirect_to profile_path
@@ -88,7 +88,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  
+
   # profile page
   #
   #
