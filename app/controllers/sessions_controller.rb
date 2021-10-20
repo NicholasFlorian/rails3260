@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
 
     # were not authenticating, 
     # find the user with the matching email and password
-    requested_user = User.find_by(
+    requested_user = User.where(
       email: email,
       password: password) 
     
@@ -69,18 +69,19 @@ class SessionsController < ApplicationController
     if submitted_user.save
 
       # log the user into the system
-      requested_user = User.find_by(
+      requested_user = User.where(
         email: email,
         password: password) 
 
       # on first time sign up add the items 
-      coin = Coin.new(
-        :fk_user_id => requested_user.id,
-        :denomination => 0.25
-      )
-      coin.save
-      coin.save 
-      coin.save
+      for i in 0..2
+
+        coin = Coin.new(
+          :fk_user_id => requested_user.id,
+          :denomination => 0.25
+        )
+        coin.save
+      end
 
       die = Die.new(
         :fk_user_id => requested_user.id,
@@ -112,7 +113,12 @@ class SessionsController < ApplicationController
   # GET define our user page
   def profile 
 
+    # get our stored session
     @user = current_user
+
+    # get our coins and dies
+    @coins = Coin.where(fk_user_id: @user.id)
+    @dies = Dies.where(fk_user_id: @user.id)
   end
 
   # DELETE sign out of the app
