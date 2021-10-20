@@ -1,6 +1,6 @@
 <% provide(:title, "Profile") %> 
 
-<h1> Profile </h1><br>
+<h1> Profile </h1>
 
 <p>
   <strong>Name:</strong>
@@ -22,28 +22,49 @@
   <%= @user.gems %>
 </p>
 
-<h1> Items </h1> <br>
+<br>
+
+<h1> Items </h1>
 
 <h2> Coins </h2>
 
-<tbody>
-  <% @coins.each do |coin| %>
+<table>
+  <thead>
     <tr>
-      <td><%= coin.denomination %></td>
+      <th>Denomination</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
-</tbody>
+  </thead>
+
+  <tbody>
+    <% @coins.each do |coin| %>
+      <tr>
+        <td><%= coin.denomination %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <h2> Die </h2>
 
-<tbody>
-  <% @dies.each do |die| %>
+<table>
+  <thead>
     <tr>
-      <td><%= die.colour %></td>
-      <td><%= die.sides %></td>
+      <th>Colour</th>
+      <th>Sides</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
-</tbody>
+  </thead>
+
+  <tbody>
+    <% @dies.each do |die| %>
+      <tr>
+        <td><%= die.colour %></td>
+        <td><%= die.sides %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Sign Out', sign_out_path %>
 
