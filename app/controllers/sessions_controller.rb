@@ -118,7 +118,7 @@ class SessionsController < ApplicationController
 
     # get our coins and dies
     @coins = Coin.where(fk_user_id: @user.id)
-    @dies = Dies.where(fk_user_id: @user.id)
+    @dies = Die.where(fk_user_id: @user.id)
   end
 
   # DELETE sign out of the app
