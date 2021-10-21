@@ -165,6 +165,9 @@ class SessionsController < ApplicationController
 
   def turn
 
-
+    # update the users score
+    new_points @user.points + 100
+    new_gems = @user.gems + 1
+    @user.update(points: new_points, gems: new_gems)
   end
 end
