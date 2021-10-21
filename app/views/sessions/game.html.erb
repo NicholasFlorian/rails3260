@@ -1,29 +1,3 @@
-<% provide(:title, "Profile") %> 
-
-<h1> Profile </h1>
-
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Points:</strong>
-  <%= @user.points %>
-</p>
-
-<p>
-  <strong>Gems:</strong>
-  <%= @user.gems %>
-</p>
-
-<br>
-
 <h1> Items </h1>
 
 <h2> Coins </h2>
@@ -65,12 +39,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Play Game', game_user_path%>
-<br>
-
-<%= link_to 'Sign Out', sign_out_path %>
-<br>
-
-<%= link_to 'Delete Account', delete_user_path%>
-

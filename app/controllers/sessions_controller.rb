@@ -147,4 +147,24 @@ class SessionsController < ApplicationController
     # redirect back to the main page
     redirect_to register_path 
   end
+
+  # game page
+  #
+  #
+
+  # GET define our game page
+  def game
+
+    # get our stored session
+    @user = current_user
+
+    # get our coins and dies
+    @coins = Coin.where(fk_user_id: @user.id)
+    @dies = Die.where(fk_user_id: @user.id)
+  end
+
+  def turn
+
+
+  end
 end
