@@ -87,7 +87,7 @@ class SessionsController < ApplicationController
 
       die.save
 
-      flash[:success] = "Welcome first timer!"
+      flash[:success] = "Welcome, and Thanks for signing up!"
       store_user requested_user
       redirect_to profile_path 
     else
@@ -129,6 +129,9 @@ class SessionsController < ApplicationController
   # DELETE destroy the user and sign out.
   def delete_user
 
+    # get our stored session
+    @user = current_user
+
     # delete and clear the user instance
     @user.destroy
     @user = nil
@@ -140,6 +143,7 @@ class SessionsController < ApplicationController
     redirect_to register_path 
   end
 
+  
   # game page
   #
   #
@@ -156,6 +160,9 @@ class SessionsController < ApplicationController
   end
 
   def turn
+
+    # get our stored session
+    @user = current_user
 
     # update the users score
     new_points @user.points + 100

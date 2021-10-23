@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   # game page
   get     'game', to:         'sessions#game'
-  post    'turn', to:         'turn#path'
+  post    'turn', to:         'sessions#turn'
   
   # set our root
   root 'sessions#register'
