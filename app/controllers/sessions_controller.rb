@@ -168,9 +168,9 @@ class SessionsController < ApplicationController
 
     # variables
     player = nil 
+    tally = nil
     points = 0
     gems = 0
-
 
     # play the game!
     # create the player 
@@ -187,15 +187,19 @@ class SessionsController < ApplicationController
       player.store(DieRandomizer.new(die.sides, die.colour))
     end 
 
-
     # run the turn
     player.throw
+    tally = player.tally :all
     points = player.tally :all
-    flash[:success] = "Turn was run results: #{points}"
-
+    flash[:success] = "Turn was run results: #{tally.inspect} . Total points: #{points}"
 
     # update the users score
-    new_points = @user.points + points
+    new_points = @user.points 
+    for point in points
+      
+      new_points += point
+    end 
+
     new_gems = @user.gems + 1
     @user.update(points: new_points, gems: new_gems)
   end
