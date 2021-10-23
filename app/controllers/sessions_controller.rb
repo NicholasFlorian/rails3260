@@ -190,7 +190,7 @@ class SessionsController < ApplicationController
 
     # run the turn
     player.throw
-    points = player.tally
+    points = player.tally :all
     flash[:success] = "Turn was run results: #{points}"
 
 
