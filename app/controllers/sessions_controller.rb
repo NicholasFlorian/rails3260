@@ -43,7 +43,7 @@ class SessionsController < ApplicationController
       end
 
       # refresh the page
-      redirect_to register_path  
+      #redirect_to register_path  
     end
   end
 

@@ -2,10 +2,6 @@
 
 <h1>Dice Game</h1> <br>
 
-<% if flash.key? :status_msg %>
-  <p><%= flash[:status_msg] %></p>
-<% end %>
-
 <h2>Sign In</h2>
 
 <div class="row">
@@ -23,6 +19,10 @@
     <%= f.submit "Sign in", class: "btn btn-primary" %> <% end %> 
   </div>
 </div>
+
+<% if flash.key? :status_msg %>
+  <p><%= flash[:status_msg] %></p>
+<% end %>
 
 <p><i>Don't have an account? Sign up below!</i></p>
 
@@ -47,3 +47,6 @@
   </div>
 </div>
 
+<% if flash.key? :status_msg %>
+  <p><%= flash[:status_msg] %></p>
+<% end %>
