@@ -36,11 +36,7 @@ class SessionsController < ApplicationController
     else
 
       # create an error message.
-      respond_to do |format|
-        format.html do
-          flash.now[:status_msg] = "Log in failed, incorrect username or password"
-        end
-      end
+      flash.now[:notice] = "There was an error logging in."
 
       # refresh the page
       #redirect_to register_path  
@@ -95,12 +91,7 @@ class SessionsController < ApplicationController
     else
       
       # create an error message.
-      respond_to do |format|
-        format.html do
-          flash.now[:status_msg] = "Sign in failed (internal error):"
-          render :contact, locals: { feedback: params }
-        end
-      end
+      flash.now[:notice] = "Error"
     end
   end
 

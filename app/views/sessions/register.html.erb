@@ -20,8 +20,10 @@
   </div>
 </div>
 
-<% if flash.key? :status_msg %>
-  <p><%= flash[:status_msg] %></p>
+<% flash.each do |type, msg| %>
+  <div>
+    <%= msg %>
+  </div>
 <% end %>
 
 <p><i>Don't have an account? Sign up below!</i></p>
