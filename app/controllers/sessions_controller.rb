@@ -136,14 +136,11 @@ class SessionsController < ApplicationController
     @user.destroy
     @user = nil
 
-    # sign out of the session
-    sign_out
-
     # redirect back to the main page
     redirect_to register_path 
   end
 
-  
+
   # game page
   #
   #
@@ -165,7 +162,7 @@ class SessionsController < ApplicationController
     @user = current_user
 
     # update the users score
-    new_points @user.points + 100
+    new_points = @user.points + 100
     new_gems = @user.gems + 1
     @user.update(points: new_points, gems: new_gems)
   end
