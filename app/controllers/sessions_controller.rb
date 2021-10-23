@@ -39,7 +39,6 @@ class SessionsController < ApplicationController
       respond_to do |format|
         format.html do
           flash.now[:status_msg] = "Log in failed, incorrect username or password"
-          render :contact, locals: { feedback: params }
         end
       end
 
