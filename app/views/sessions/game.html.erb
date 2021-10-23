@@ -40,16 +40,11 @@
   </tbody>
 </table>
 
-<h5> Results </h5>
+<h3> Results </h3>
 <% flash.each do |message_type, message| %>
 
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
-
-
+<br>
 <%= button_to 'Play Turn', turn_path%>
-<br>
-
-<h5> Back </h5>
-<br>
 <%= button_to 'Back to Profile', profile_path%>
