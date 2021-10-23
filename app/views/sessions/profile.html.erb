@@ -50,7 +50,7 @@
   </tbody>
 </table>
 
-<h2> Die </h2>
+<h2> Dice </h2>
 
 <table>
   <thead>
@@ -74,8 +74,8 @@
 <%= link_to 'Play Game', game_path%>
 <br>
 
-<%= link_to 'Sign Out', sign_out_path %>
+<%= link_to 'Sign Out', sign_out_path, method: :delete, data: { confirm: 'Are you sure?' }%>
 <br>
 
-<%= link_to 'Delete Account', delete_user_path%>
+<%= link_to 'Delete Account', delete_user_path, method: :delete, data: { confirm: 'Are you sure?' }%>
 
