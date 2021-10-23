@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
       flash.now[:notice] = "There was an error logging in."
 
       # refresh the page
-      #redirect_to register_path  
+      redirect_to register_path  
     end
 
     flash.now[:notice] = "HUHUUHUHUHUHUHUHU"
