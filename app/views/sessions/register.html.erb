@@ -20,15 +20,11 @@
   </div>
 </div>
 
-<% flash.each do |type, msg| %>
-  <div>
-    <%= msg %>
-  </div>
+<% flash.each do |message_type, message| %>
+
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
 
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
 
 <p><i>Don't have an account? Sign up below!</i></p>
 

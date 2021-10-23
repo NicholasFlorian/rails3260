@@ -31,18 +31,17 @@ class SessionsController < ApplicationController
       
       # log the user in and redirect to the user's show page.
       #@user = requested_user
+      flash[:success] = "Welcome again!"
       store_user requested_user
       redirect_to profile_path 
     else
 
       # create an error message.
-      flash.now[:notice] = "There was an error logging in."
+      flash[:success] = "There was an error connecting."
 
       # refresh the page
-      redirect_to register_path  
+      #redirect_to register_path  
     end
-
-    flash.now[:notice] = "HUHUUHUHUHUHUHUHU"
   end
 
   # POST sign up for the app
