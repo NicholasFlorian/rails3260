@@ -40,7 +40,7 @@ class SessionsController < ApplicationController
       flash[:success] = "There was an error connecting."
 
       # refresh the page
-      #redirect_to register_path  
+      redirect_to register_path  
     end
   end
 
@@ -87,6 +87,7 @@ class SessionsController < ApplicationController
 
       die.save
 
+      flash[:success] = "Welcome first timer!"
       store_user requested_user
       redirect_to profile_path 
     else
