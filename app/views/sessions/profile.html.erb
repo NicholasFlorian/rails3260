@@ -71,12 +71,11 @@
   </tbody>
 </table>
 
-<%= button_to 'Play Game', game_path%>
+<%= link_to 'Play Game', game_path%>
 <br>
 
-<%= button_to 'Sign Out', sign_out_path, method: :delete, data: { confirm: 'Are you sure?' }%>
-<br>
+<%= link_to 'Sign Out', sign_out_path, method: :delete, data: { confirm: 'Are you sure?' }%>
 
 <h3> Delete Account </h3>
-<%= button_to 'Delete Account', delete_user_path, method: :delete, data: { confirm: 'Are you sure?' }%>
+<%= link_to 'Delete Account', delete_user_path, method: :delete, data: { confirm: 'Are you sure?' }%>
 
