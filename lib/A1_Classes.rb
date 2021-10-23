@@ -1,0 +1,10 @@
+$: << "."
+require 'Randomizer' 
+require 'Coin'
+require 'Die'
+require 'RandomizerContainer'
+require 'Bag'
+require 'Hand'
+require 'Cup'
+require 'Throw'
+require 'Player'

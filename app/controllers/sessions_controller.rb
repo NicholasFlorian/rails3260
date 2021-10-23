@@ -87,7 +87,7 @@ class SessionsController < ApplicationController
 
       die.save
 
-      flash[:success] = "Welcome, and Thanks for signing up!"
+      flash[:success] = "Thanks for signing up!"
       store_user requested_user
       redirect_to profile_path 
     else
@@ -161,8 +161,41 @@ class SessionsController < ApplicationController
     # get our stored session
     @user = current_user
 
+    # get our coins and dies
+    @coins = Coin.where(fk_user_id: @user.id)
+    @dies = Die.where(fk_user_id: @user.id)
+    
+
+    # variables
+    player = nil 
+    points = 0
+    gems = 0
+
+
+    # play the game!
+    # create the player 
+    player = Player.new(@user.name)
+
+    # store the items for the player
+    for coin in @coins
+
+      player.store(CoinRandomizer.new(coin.denomination))
+    end
+
+    for die in @dies 
+
+      player.store(DieRanomizer.new(die.sides, die.colour))
+    end 
+
+
+    # run the turn
+    player.throw
+    points = player.tally
+    flash[:success] = "Turn was run results: #{points}"
+
+
     # update the users score
-    new_points = @user.points + 100
+    new_points = @user.points + points
     new_gems = @user.gems + 1
     @user.update(points: new_points, gems: new_gems)
   end
