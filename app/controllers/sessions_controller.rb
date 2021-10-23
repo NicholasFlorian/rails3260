@@ -189,8 +189,8 @@ class SessionsController < ApplicationController
 
     # run the turn
     player.throw
-    tally = player.tally :all
-    points = player.tally :all
+    tally = player.tally({})
+    points = player.sum({})
     flash[:success] = "Turn was run results: #{tally.inspect} . Total points: #{points}"
 
     # update the users score
@@ -202,5 +202,7 @@ class SessionsController < ApplicationController
 
     new_gems = @user.gems + 1
     @user.update(points: new_points, gems: new_gems)
+
+    redirect_to game_path
   end
 end
