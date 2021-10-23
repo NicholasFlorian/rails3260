@@ -179,19 +179,19 @@ class SessionsController < ApplicationController
     # store the items for the player
     for coin in @coins
 
-      player.store(CoinRandomizer.new(coin.denomination))
+      player.load(CoinRandomizer.new(coin.denomination))
     end
 
     for die in @dies 
 
-      player.store(DieRandomizer.new(die.sides, die.colour))
+      player.load(DieRandomizer.new(die.sides, die.colour))
     end 
 
     # run the turn
     player.throw
     tally = player.tally({})
     points = player.sum({})
-    flash[:success] = "Turn was run results: #{tally.inspect} . Total points: #{points}"
+    flash[:success] = "Turn was run results: #{tally} . Total points: #{points}"
 
     # update the users score
     new_points = @user.points 
