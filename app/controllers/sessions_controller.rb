@@ -184,7 +184,7 @@ class SessionsController < ApplicationController
 
     for die in @dies 
 
-      player.store(DieRanomizer.new(die.sides, die.colour))
+      player.store(DieRandomizer.new(die.sides, die.colour))
     end 
 
 

@@ -46,5 +46,8 @@
   <div class="alert alert-<%= message_type %>"><%= message %></div>
 <% end %>
 <br>
+
 <%= button_to 'Play Turn', turn_path%>
-<%= link_to 'Back to Profile', profile_path%>
+
+<h3> Back to Profile </h3>
+<%= link_to 'Back', profile_path%>
