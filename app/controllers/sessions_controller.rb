@@ -41,6 +41,8 @@ class SessionsController < ApplicationController
       # refresh the page
       #redirect_to register_path  
     end
+
+    flash.now[:notice] = "HUHUUHUHUHUHUHUHU"
   end
 
   # POST sign up for the app

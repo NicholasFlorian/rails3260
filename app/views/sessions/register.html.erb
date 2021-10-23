@@ -26,6 +26,10 @@
   </div>
 <% end %>
 
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <p><i>Don't have an account? Sign up below!</i></p>
 
 <h2>Sign Up</h2>
