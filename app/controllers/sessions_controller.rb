@@ -179,15 +179,16 @@ class SessionsController < ApplicationController
     # store the items for the player
     for coin in @coins
 
-      player.load(CoinRandomizer.new(coin.denomination))
+      player.store(CoinRandomizer.new(coin.denomination))
     end
 
     for die in @dies 
 
-      player.load(DieRandomizer.new(die.sides, die.colour))
+      player.store(DieRandomizer.new(die.sides, die.colour))
     end 
 
     # run the turn
+    player.load({"item" => :die})
     player.throw
     tally = player.tally({})
     points = player.sum({})
