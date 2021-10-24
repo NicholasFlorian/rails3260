@@ -164,15 +164,8 @@ class SessionsController < ApplicationController
     # get our coins and dies
     @coins = Coin.where(fk_user_id: @user.id)
     @dies = Die.where(fk_user_id: @user.id)
-    
 
-    # variables
-    player = nil 
-    tally = nil
-    points = 0
-    gems = 0
 
-    # play the game!
     # create the player 
     player = Player.new(@user.name)
 
@@ -187,23 +180,43 @@ class SessionsController < ApplicationController
       player.store(DieRandomizer.new(die.sides, die.colour))
     end 
 
-    # run the turn
-    player.load({"item" => :die})
-    player.throw
-    tally = player.tally({})
-    points = player.sum({})
-    flash[:success] = "Turn was run results: #{tally} . Total points: #{points}"
 
-    # update the users score
+    # run the turn
     new_points = @user.points 
+    new_gems = @user.gems
+
+    player.load({"item" => :die})
+    player.load({"item" => :coin})
+    player.throw()
+    results = player.results({})
+    points = player.sum({})
+
+    # parse the results
+    prompt = "The Randomizer Results:\n"
+    score = 0
+
+    for result in results
+      
+      propt += result + "\n"
+    end
+
     for point in points
       
-      new_points += point
-    end 
+      score += points
+    end
 
-    new_gems = @user.gems + 1
+    # get the score
+    points = score * 100
+    gems = score % 5
+
+    prompt += "Earned #{points} points and #{gems} gems"
+    flash[:success] = prompt
+    
+
+    # update and return
+    new_points += points
+    new_gems += gems
     @user.update(points: new_points, gems: new_gems)
-
     redirect_to game_path
   end
 end
