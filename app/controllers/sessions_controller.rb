@@ -37,12 +37,12 @@ class SessionsController < ApplicationController
     else
 
       # create an error message.
-      if User.where(email: email) != nil then
+      if User.where(email: email).empty? then
 
-        flash[:error] = "Invalid Password."
+        flash[:error] = "Invalid Email."
       else
     
-        flash[:error] = "Invalid Email."
+        flash[:error] = "Invalid Password."
       end
       # refresh the page
       redirect_to register_path  
@@ -61,16 +61,19 @@ class SessionsController < ApplicationController
     if name == "" then
 
       flash[:error] = "Invalid Name."
+      return
     end
 
     if email == "" then
 
       flash[:error] = "Invalid Email."
+      return
     end
 
     if password == "" then
 
       flash[:error] = "Invalid Password."
+      return
     end
 
     # create our new user 
@@ -222,13 +225,16 @@ class SessionsController < ApplicationController
     end
 
     for point in points
+
+      prompt = prompt + point.to_s + "\n"
       
       score += point
     end
 
     # get the score
     points = score * 100
-    gems = score % 5
+    gems = score / 5
+    gems = gems.floor
 
     prompt += "Earned #{points} points and #{gems} gems."
     flash[:success] = prompt
