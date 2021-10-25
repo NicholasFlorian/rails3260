@@ -221,12 +221,12 @@ class SessionsController < ApplicationController
 
     for result in results
       
-      prompt = prompt + result.to_s + "\n"
+      prompt += "<" + result.to_s + ">"
     end
 
     for point in points
 
-      prompt = prompt + point.to_s + "\n"
+      prompt += "<" + point.to_s + ">"
       
       score += point
     end
