@@ -197,7 +197,7 @@ class SessionsController < ApplicationController
 
     for result in results
       
-      propt += result + "\n"
+      prompt = prompt + result + "\n"
     end
 
     for point in points
