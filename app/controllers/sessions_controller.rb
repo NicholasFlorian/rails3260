@@ -211,7 +211,7 @@ class SessionsController < ApplicationController
     new_gems = @user.gems
 
     player.load({"item" => :die})
-    #player.load({"item" => :coin})
+    player.load({"item" => :coin})
     player.throw()
     results = player.results({}, 0)
     points = player.sum({})

@@ -31,7 +31,7 @@ class CoinRandomizer < Randomizer
 
   def randomize()
     @result = rand(@size)
-    
+
   end
 
   def flip()
@@ -46,5 +46,4 @@ class CoinRandomizer < Randomizer
       $COIN_SIDE[@result] # returns 1 for :H, 2 for :T
     end 
   end
-  
 end
