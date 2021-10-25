@@ -188,7 +188,7 @@ class SessionsController < ApplicationController
     player.load({"item" => :die})
     player.load({"item" => :coin})
     player.throw()
-    results = player.results({})
+    results = player.results({}, 0)
     points = player.sum({})
 
     # parse the results
@@ -209,7 +209,7 @@ class SessionsController < ApplicationController
     points = score * 100
     gems = score % 5
 
-    prompt += "Earned #{points} points and #{gems} gems"
+    prompt += "Earned #{points} points and #{gems} gems."
     flash[:success] = prompt
     
 
