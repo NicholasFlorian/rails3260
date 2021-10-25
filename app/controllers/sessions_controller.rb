@@ -202,7 +202,7 @@ class SessionsController < ApplicationController
 
     for point in points
       
-      score += points
+      score += point
     end
 
     # get the score
