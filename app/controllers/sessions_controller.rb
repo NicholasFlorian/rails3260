@@ -197,7 +197,7 @@ class SessionsController < ApplicationController
 
     for result in results
       
-      prompt << prompt << result << "\n"
+      prompt + prompt + result.to_s + "\n"
     end
 
     for point in points
