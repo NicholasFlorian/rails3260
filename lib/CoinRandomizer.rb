@@ -29,9 +29,14 @@ class CoinRandomizer < Randomizer
     @attribute 
   end
 
+  def randomize()
+    @result = rand(@size)
+    
+  end
+
   def flip()
 
-    @result = rand(@size)
+    randomize()
     self
   end
 

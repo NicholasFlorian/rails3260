@@ -37,7 +37,8 @@ class SessionsController < ApplicationController
     else
 
       # create an error message.
-      if User.where(email: email).empty? then
+      requested_user = user.where(email: email)
+      if requested_user.empty? then
 
         flash[:error] = "Invalid Email."
       else
@@ -61,19 +62,19 @@ class SessionsController < ApplicationController
     if name == "" then
 
       flash[:error] = "Invalid Name."
-      return
+      redirect_to register_path 
     end
 
     if email == "" then
 
       flash[:error] = "Invalid Email."
-      return
+      redirect_to register_path 
     end
 
     if password == "" then
 
       flash[:error] = "Invalid Password."
-      return
+      redirect_to register_path 
     end
 
     # create our new user 
