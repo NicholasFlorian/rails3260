@@ -1,24 +1,5 @@
-# README
+# GAME RULES 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Each Heads is worth 100 points. Each Die roll is worth  side up * 100 points. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+For every 500 points per turn, the player earns 1 Gem.

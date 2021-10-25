@@ -38,12 +38,12 @@ class SessionsController < ApplicationController
 
       # create an error message.
       requested_user = user.where(email: email)
-      if requested_user.empty? then
+      if !!requested_user.empty then
 
-        flash[:error] = "Invalid Email."
+        flash[:error] = "Invalid Password."
       else
     
-        flash[:error] = "Invalid Password."
+        flash[:error] = "Invalid Email."
       end
       # refresh the page
       redirect_to register_path  
@@ -63,18 +63,21 @@ class SessionsController < ApplicationController
 
       flash[:error] = "Invalid Name."
       redirect_to register_path 
+      return
     end
 
     if email == "" then
 
       flash[:error] = "Invalid Email."
       redirect_to register_path 
+      return
     end
 
     if password == "" then
 
       flash[:error] = "Invalid Password."
       redirect_to register_path 
+      return
     end
 
     # create our new user 
@@ -226,8 +229,6 @@ class SessionsController < ApplicationController
     end
 
     for point in points
-
-      prompt += "<" + point.to_s + ">"
       
       score += point
     end
